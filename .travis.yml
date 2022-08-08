@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t vlad/d-r -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true vlad/d-r npm run test
